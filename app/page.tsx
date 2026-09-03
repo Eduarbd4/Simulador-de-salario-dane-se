@@ -10,6 +10,7 @@ const storePasswords:Record<string,{slug:string,password:string}>={
   "mane":{slug:"mane",password:"Mané"},
   "parkshopping":{slug:"parkshopping",password:"ParkShopping"}
 };
+const SUB_PASSWORD="subdanese26";
 const normalize=(v:string)=>v.normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim().toLowerCase();
 const money=new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"});
 const percent=new Intl.NumberFormat("pt-BR",{style:"percent",minimumFractionDigits:2,maximumFractionDigits:2});
@@ -86,8 +87,7 @@ export default function Home(){
         setStore(d.store);setRules(d.rules);
         const initial:Record<string,boolean|number>={};d.rules.forEach((r:Rule)=>initial[r.id!]=r.input_type==="yes_no");setAnswers(initial);
       }else if(role==="sub"){
-        const target=storePasswords[normalize(password)];
-        if(!target)throw new Error("Senha incorreta");
+        if(normalize(password)!==SUB_PASSWORD)throw new Error("Senha incorreta");
         setSubLogged(true);
       }
     }catch(e){setError(e instanceof Error?e.message:"Erro")}finally{setLoading(false)}
@@ -131,7 +131,7 @@ export default function Home(){
 
   if(role==="seller"&&!store)return <main className="login-page"><section className="login-card"><button className="back-link" onClick={()=>setRole(null)}>← Voltar</button><p className="eyebrow">Vendedores · acesso por loja</p><h1>Simulador de salário</h1><p>Digite a senha da sua loja.</p><label>Senha<input type="password" value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={e=>e.key==="Enter"&&enter()} autoFocus/></label>{error&&<div className="login-error">{error}</div>}<button onClick={enter} disabled={loading}>{loading?"Entrando...":"Entrar no dashboard"}</button></section></main>;
 
-  if(role==="sub"&&!subLogged)return <main className="login-page"><section className="login-card"><button className="back-link" onClick={()=>setRole(null)}>← Voltar</button><p className="eyebrow">Sub Gerentes · acesso restrito</p><h1>Simulador de salário</h1><p>Digite a senha da sua loja ou a senha de administrador.</p><label>Senha<input type="password" value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={e=>e.key==="Enter"&&enter()} autoFocus/></label>{error&&<div className="login-error">{error}</div>}<button onClick={enter} disabled={loading}>{loading?"Entrando...":"Entrar no dashboard"}</button></section></main>;
+  if(role==="sub"&&!subLogged)return <main className="login-page"><section className="login-card"><button className="back-link" onClick={()=>setRole(null)}>← Voltar</button><p className="eyebrow">Sub Gerentes · acesso restrito</p><h1>Simulador de salário</h1><p>Digite a senha de Sub Gerente ou a senha de administrador.</p><label>Senha<input type="password" value={password} onChange={e=>setPassword(e.target.value)} onKeyDown={e=>e.key==="Enter"&&enter()} autoFocus/></label>{error&&<div className="login-error">{error}</div>}<button onClick={enter} disabled={loading}>{loading?"Entrando...":"Entrar no dashboard"}</button></section></main>;
 
   if(role==="seller"&&store){
     const section=(name:Rule["section"],title:string)=>{const sectionRules=rules.filter(r=>r.section===name&&r.active);if(!sectionRules.length)return null;const subtotal=sectionRules.reduce((sum,r)=>{if(r.operation==="none")return sum;const value=ruleValue(r,answers[r.id!]);return sum+(r.operation==="subtract"?-value:value)},0);const yesCount=sectionRules.filter(r=>r.input_type==="yes_no"&&Boolean(answers[r.id!])).length;return <section className="panel"><div className="panel-title"><div><h2>{title}</h2></div><span>{name==="eligibility"?`${yesCount} de ${sectionRules.length} em Sim`:`Subtotal: ${money.format(subtotal)}`}</span></div><div className="rows">{sectionRules.map(r=><div className="row" key={r.id}><span>{r.label}{r.operation!=="none"&&r.amount>0?<small> · {r.operation==="subtract"?"-":"+"}{money.format(r.amount)}{r.input_type==="number"?" por unidade":""}</small>:null}</span>{r.input_type==="yes_no"?<Toggle value={Boolean(answers[r.id!])} onChange={v=>setAnswers({...answers,[r.id!]:v})}/>:r.input_type==="number"?<input className="orange-number" type="number" min="0" step="1" value={Number(answers[r.id!])||""} aria-label={r.label} onChange={e=>setAnswers({...answers,[r.id!]:Math.max(0,Math.floor(Number(e.target.value)||0))})}/>:<strong>{money.format(r.amount)}</strong>}</div>)}</div></section>};
