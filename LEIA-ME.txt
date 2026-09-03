@@ -1,0 +1,20 @@
+DANE SE — PROJETO COMPLETO
+
+Este ZIP já está organizado para a raiz do repositório.
+
+Contém:
+- app/page.tsx
+- app/globals.css
+- app/layout.tsx
+- app/login.css
+- app/admin.css
+- app/dynamic-admin.css
+- package.json
+- tsconfig.json
+- next-env.d.ts
+- postcss.config.mjs
+
+IMPORTANTE:
+O package-lock.json não foi recriado artificialmente. Se o seu repositório atual já tem o package-lock.json original, mantenha-o. As dependências do package.json foram mantidas nas mesmas versões do repositório público.
+
+Ao subir pelo GitHub, envie o CONTEÚDO desta pasta para a raiz do repositório, não a pasta DANESE_PROJETO_COMPLETO por fora.
