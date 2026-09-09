@@ -1,0 +1,35 @@
+
+:root{
+  --bs-blue:#073b7a;--bs-blue2:#0b4f9c;--bs-sand:#eee3d3;
+  --bs-off:#f8f4ed;--bs-black:#11110f;--bs-orange:#ef6c24;
+  --bs-line:rgba(17,17,15,.12);
+}
+html,body{background:var(--bs-off)!important;color:var(--bs-black)}
+body{
+  background-image:
+    radial-gradient(circle at 92% 4%,rgba(7,59,122,.06),transparent 24rem),
+    linear-gradient(135deg,rgba(238,227,211,.55),transparent 42%)!important;
+}
+.card,.panel,.section,.box,[class*="card"],[class*="panel"]{
+  border-radius:14px!important;border-color:var(--bs-line)!important;
+  box-shadow:0 8px 30px rgba(17,17,15,.045)!important;
+}
+h1,h2,h3{letter-spacing:-.025em}
+input,select,button{border-radius:9px!important}
+input:not([type="checkbox"]):not([type="radio"]),select{background:#fffaf3!important}
+input:focus,select:focus{outline:2px solid rgba(7,59,122,.25)!important;border-color:var(--bs-blue)!important}
+button{transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
+button:hover{transform:translateY(-1px)}
+body::before{
+  content:"";position:fixed;z-index:-1;right:-34px;top:0;width:150px;height:100vh;opacity:.9;
+  background:
+    radial-gradient(circle at 0 0,transparent 0 49%,var(--bs-blue) 50% 72%,transparent 73%) 0 0/76px 76px,
+    linear-gradient(45deg,transparent 0 48%,rgba(7,59,122,.12) 49% 51%,transparent 52%) 0 0/76px 76px,
+    var(--bs-sand);
+}
+[class*="total"],[class*="salary"],[class*="salario"]{border-color:rgba(239,108,36,.22)!important}
+::selection{background:var(--bs-blue);color:white}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--bs-blue);outline-offset:2px
+}
+@media(max-width:900px){body::before{width:34px;opacity:.45}}

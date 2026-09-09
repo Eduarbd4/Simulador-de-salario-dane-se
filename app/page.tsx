@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import "./brasilia-modernista.css";
 const API="https://svoeylrqgqbwfioezdhk.supabase.co/functions/v1/salary-dashboard";
 const storePasswords:Record<string,{slug:string,password:string}>={
   "flagship":{slug:"flagship",password:"Flagship"},
