@@ -177,3 +177,110 @@ body{font-family:Arial,Helvetica,sans-serif!important}
 @media(max-width:640px){
   .choice-copy h1{font-size:43px!important;line-height:.94!important}
 }
+
+
+/* ============================================================
+   ENTRADA EXATA — referência visual aprovada
+   A imagem aprovada é usada diretamente como composição visual.
+   Os cards recebem áreas clicáveis transparentes.
+   ============================================================ */
+.reference-entry{
+  min-height:100svh;
+  width:100%;
+  margin:0;
+  padding:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:auto;
+  background:#f1efeb;
+}
+.reference-entry-stage{
+  position:relative;
+  flex:none;
+  width:min(100vw, calc(100svh * 1085 / 972), 1085px);
+  aspect-ratio:1085 / 972;
+  background-image:url("/entrada-danese-desktop.jpg");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:100% 100%;
+}
+.reference-hotspot{
+  position:absolute;
+  z-index:5;
+  display:block;
+  border:0!important;
+  margin:0!important;
+  padding:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  cursor:pointer;
+  border-radius:13px!important;
+  color:transparent!important;
+}
+.reference-hotspot span{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  overflow:hidden!important;
+  clip:rect(0 0 0 0)!important;
+  white-space:nowrap!important;
+}
+.reference-hotspot:hover{
+  background:rgba(255,255,255,.035)!important;
+  outline:2px solid rgba(255,255,255,.32)!important;
+  outline-offset:-2px!important;
+}
+.reference-hotspot:focus-visible{
+  outline:3px solid #f28a4b!important;
+  outline-offset:-3px!important;
+}
+.reference-seller{
+  left:18.62%;
+  top:31.58%;
+  width:28.30%;
+  height:27.58%;
+}
+.reference-sub{
+  left:48.85%;
+  top:31.58%;
+  width:28.39%;
+  height:27.58%;
+}
+
+/* Mobile uses the approved mobile composition rather than shrinking desktop. */
+@media(max-width:700px){
+  .reference-entry{
+    align-items:flex-start;
+    background:#f7f5f0;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+  .reference-entry-stage{
+    width:100vw;
+    height:auto;
+    min-height:0;
+    aspect-ratio:366 / 886;
+    background-image:url("/entrada-danese-mobile.jpg");
+    background-size:100% 100%;
+  }
+  .reference-seller{
+    left:13.11%;
+    top:24.60%;
+    width:76.23%;
+    height:21.11%;
+  }
+  .reference-sub{
+    left:13.11%;
+    top:47.74%;
+    width:76.23%;
+    height:21.90%;
+  }
+}
+
+/* Very wide desktop: preserve the approved framing instead of stretching it. */
+@media(min-width:1200px) and (min-height:900px){
+  .reference-entry-stage{
+    width:min(1085px, calc(100svh * 1085 / 972));
+  }
+}
