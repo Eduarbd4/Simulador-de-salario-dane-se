@@ -128,20 +128,52 @@ export default function Home(){
 
   if(adminPassword)return <main><header className="hero"><div><p className="eyebrow">Área exclusiva</p><h1>Administração das lojas</h1><p>Selecione uma loja, altere valores e personalize perguntas.</p></div><button className="admin-button" onClick={resetAll}>Sair</button></header><section className="admin-workspace"><aside><h3>Lojas</h3>{adminStores.map(s=><button key={s.id} className={adminStore?.id===s.id?"selected":""} onClick={()=>selectAdminStore(s)}>{s.name}</button>)}</aside>{adminStore&&<div className="admin-content"><section className="panel"><div className="panel-title"><div><p>Configuração</p><h2>{adminStore.name}</h2></div></div><div className="admin-grid"><label>Nome da loja<input value={adminStore.name} onChange={e=>setAdminStore({...adminStore,name:e.target.value})}/></label><label>Valor do piso<Num value={Number(adminStore.floor_value)} onChange={v=>setAdminStore({...adminStore,floor_value:v})}/></label><label>Valor da meta<Num value={Number(adminStore.goal_value)} onChange={v=>setAdminStore({...adminStore,goal_value:v})}/></label><label>Salário-base<Num value={Number(adminStore.base_salary)} onChange={v=>setAdminStore({...adminStore,base_salary:v})}/></label></div><button className="save-button" onClick={saveStore} disabled={loading}>Salvar configuração</button></section><section className="panel rule-editor"><div className="panel-title"><div><p>Personalização</p><h2>Perguntas e valores</h2></div><button className="save-button" onClick={addRule}>+ Nova pergunta</button></div>{adminRules.map((r,i)=><div className="rule-row" key={r.id||"new"+i}><input value={r.label} onChange={e=>setAdminRules(x=>x.map((a,j)=>j===i?{...a,label:e.target.value}:a))}/><select value={r.section} onChange={e=>setAdminRules(x=>x.map((a,j)=>j===i?{...a,section:e.target.value as Rule["section"]}:a))}><option value="eligibility">Elegibilidade</option><option value="accelerator">Acelerador</option><option value="bonus">Bonificações</option><option value="summary">Resumo</option></select><select value={r.input_type} onChange={e=>setAdminRules(x=>x.map((a,j)=>j===i?{...a,input_type:e.target.value as Rule["input_type"]}:a))}><option value="yes_no">Sim/Não</option><option value="number">Número</option><option value="automatic">Automático</option></select><select value={r.operation} onChange={e=>setAdminRules(x=>x.map((a,j)=>j===i?{...a,operation:e.target.value as Rule["operation"]}:a))}><option value="add">Somar</option><option value="subtract">Descontar</option><option value="none">Não calcular</option></select><input type="number" value={r.amount} onChange={e=>setAdminRules(x=>x.map((a,j)=>j===i?{...a,amount:Number(e.target.value)}:a))}/><button onClick={()=>saveRule(r)}>Salvar</button><button className="danger" onClick={()=>deleteRule(r.id)}>Excluir</button></div>)}</section></div>}</section></main>;
 
-  if(!role)return <main className="reference-entry" aria-label="DANE SE — Simulador de Salário">
-    <section className="reference-entry-stage">
-      <button
-        type="button"
-        className="reference-hotspot reference-seller"
-        aria-label="Acessar simulador de Vendedores"
-        onClick={()=>{setRole("seller");setPassword("");setError("")}}
-      ><span>Vendedores</span></button>
-      <button
-        type="button"
-        className="reference-hotspot reference-sub"
-        aria-label="Acessar simulador de Sub Gerentes"
-        onClick={()=>{setRole("sub");setPassword("");setError("")}}
-      ><span>Sub Gerentes</span></button>
+  if(!role)return <main className="hq-entry">
+    <section className="hq-shell">
+      <div className="hq-main">
+        <div className="hq-topline">
+          <span className="hq-menu" aria-hidden="true">☰</span>
+          <span className="hq-tagline">MODA QUE VEM<br/>DE UM LUGAR REAL.</span>
+        </div>
+
+        <div className="hq-brand">DANE SE</div>
+        <div className="hq-rule"/>
+        <div className="hq-title">SIMULADOR DE SALÁRIO</div>
+        <div className="hq-city">BRASÍLIA</div>
+
+        <div className="hq-role-grid">
+          <button
+            className="hq-role hq-role-seller"
+            onClick={()=>{setRole("seller");setPassword("");setError("")}}
+          >
+            <div className="hq-role-icon hq-person-icon" aria-hidden="true"/>
+            <strong>VENDEDORES</strong>
+            <span>Acesse seu simulador<br/>de comissões</span>
+            <i aria-hidden="true">→</i>
+          </button>
+
+          <button
+            className="hq-role hq-role-sub"
+            onClick={()=>{setRole("sub");setPassword("");setError("")}}
+          >
+            <div className="hq-role-icon hq-group-icon" aria-hidden="true"/>
+            <strong>SUB GERENTES</strong>
+            <span>Acesse seu simulador<br/>de premiações</span>
+            <i aria-hidden="true">→</i>
+          </button>
+        </div>
+
+        <div className="hq-photo">
+          <div className="hq-monument hq-dome-left"/>
+          <div className="hq-monument hq-towers"/>
+          <div className="hq-monument hq-bowl"/>
+          <div className="hq-photo-caption">BRASÍLIA,<br/>SEMPRE.</div>
+        </div>
+      </div>
+
+      <aside className="hq-pattern" aria-hidden="true">
+        {Array.from({length:10}).map((_,i)=><span key={i} className={i%2===0?"hq-tile hq-dove":"hq-tile hq-star"}/>)}
+      </aside>
     </section>
   </main>;
 

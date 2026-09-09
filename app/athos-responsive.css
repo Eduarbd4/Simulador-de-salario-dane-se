@@ -179,108 +179,350 @@ body{font-family:Arial,Helvetica,sans-serif!important}
 }
 
 
+
 /* ============================================================
-   ENTRADA EXATA — referência visual aprovada
-   A imagem aprovada é usada diretamente como composição visual.
-   Os cards recebem áreas clicáveis transparentes.
+   ENTRADA HIGH QUALITY — HTML/CSS real, sem screenshot pixelado
    ============================================================ */
-.reference-entry{
+.hq-entry{
   min-height:100svh;
-  width:100%;
-  margin:0;
-  padding:0;
+  display:grid;
+  place-items:center;
+  padding:28px;
+  background:#efede9;
+}
+.hq-shell{
+  width:min(1120px,96vw);
+  min-height:calc(min(1120px,96vw) * .895);
+  display:grid;
+  grid-template-columns:1fr 108px;
+  overflow:hidden;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 28px 90px rgba(15,23,42,.11);
+}
+.hq-main{
+  position:relative;
+  min-height:700px;
   display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:36px 56px 0;
+  background:
+    linear-gradient(180deg,#fcfbf8 0 56%,rgba(243,247,250,.96) 56% 100%);
+  overflow:hidden;
+}
+.hq-topline{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+.hq-menu{
+  font-size:0;
+  width:30px;
+  height:22px;
+  position:relative;
+}
+.hq-menu::before,.hq-menu::after,.hq-menu{
+  background-image:linear-gradient(#1c2730,#1c2730);
+  background-repeat:no-repeat;
+}
+.hq-menu::before,.hq-menu::after{
+  content:"";
+  position:absolute;
+  left:0;
+  width:28px;
+  height:2px;
+  background:#1c2730;
+}
+.hq-menu::before{top:2px}
+.hq-menu::after{bottom:2px}
+.hq-menu{border-top:2px solid #1c2730;border-bottom:0}
+.hq-tagline{
+  font-size:9px;
+  line-height:1.65;
+  letter-spacing:.30em;
+  text-align:right;
+  color:#202b39;
+}
+.hq-brand{
+  margin-top:24px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:56px;
+  letter-spacing:.20em;
+  font-weight:400;
+}
+.hq-rule{
+  width:44px;
+  height:1px;
+  background:#151515;
+  margin:18px 0 24px;
+}
+.hq-title{
+  font-size:16px;
+  letter-spacing:.34em;
+  font-weight:500;
+}
+.hq-city{
+  margin-top:20px;
+  font-size:10px;
+  letter-spacing:.42em;
+  color:#4f5560;
+}
+.hq-role-grid{
+  position:relative;
+  z-index:4;
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  width:min(640px,90%);
+}
+.hq-role{
+  min-height:258px;
+  border-radius:14px;
+  border:1px solid #dedede;
+  display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  overflow:auto;
-  background:#f1efeb;
-}
-.reference-entry-stage{
-  position:relative;
-  flex:none;
-  width:min(100vw, calc(100svh * 1085 / 972), 1085px);
-  aspect-ratio:1085 / 972;
-  background-image:url("/entrada-danese-desktop.jpg");
-  background-repeat:no-repeat;
-  background-position:center;
-  background-size:100% 100%;
-}
-.reference-hotspot{
-  position:absolute;
-  z-index:5;
-  display:block;
-  border:0!important;
-  margin:0!important;
-  padding:0!important;
-  background:transparent!important;
-  box-shadow:none!important;
+  gap:14px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
   cursor:pointer;
-  border-radius:13px!important;
-  color:transparent!important;
+  transition:transform .15s ease,box-shadow .15s ease;
 }
-.reference-hotspot span{
-  position:absolute!important;
-  width:1px!important;
-  height:1px!important;
-  overflow:hidden!important;
-  clip:rect(0 0 0 0)!important;
-  white-space:nowrap!important;
+.hq-role:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(0,0,0,.09);
 }
-.reference-hotspot:hover{
-  background:rgba(255,255,255,.035)!important;
-  outline:2px solid rgba(255,255,255,.32)!important;
-  outline-offset:-2px!important;
+.hq-role-seller{
+  background:linear-gradient(145deg,#0d3a8e,#0a2f73);
+  color:#fff;
+  border-color:#0d3a8e;
 }
-.reference-hotspot:focus-visible{
-  outline:3px solid #f28a4b!important;
-  outline-offset:-3px!important;
+.hq-role-sub{
+  background:rgba(255,255,255,.94);
+  color:#111;
 }
-.reference-seller{
-  left:18.62%;
-  top:31.58%;
-  width:28.30%;
-  height:27.58%;
+.hq-role strong{
+  font-size:20px;
+  letter-spacing:.01em;
 }
-.reference-sub{
-  left:48.85%;
-  top:31.58%;
-  width:28.39%;
-  height:27.58%;
+.hq-role span{
+  font-size:14px;
+  line-height:1.55;
+  text-align:center;
 }
+.hq-role i{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-style:normal;
+  font-size:22px;
+  margin-top:2px;
+}
+.hq-role-seller i{
+  background:#fff;
+  color:#0d3a8e;
+}
+.hq-role-sub i{
+  background:#0d3a8e;
+  color:#fff;
+}
+.hq-role-icon{
+  position:relative;
+  width:54px;
+  height:54px;
+}
+.hq-person-icon::before{
+  content:"";
+  position:absolute;
+  width:21px;height:21px;border-radius:50%;
+  background:currentColor;
+  left:50%;top:2px;transform:translateX(-50%);
+}
+.hq-person-icon::after{
+  content:"";
+  position:absolute;
+  width:38px;height:24px;border-radius:20px 20px 5px 5px;
+  background:currentColor;
+  left:50%;bottom:2px;transform:translateX(-50%);
+}
+.hq-group-icon::before{
+  content:"";
+  position:absolute;
+  width:18px;height:18px;border-radius:50%;
+  background:#0d3a8e;
+  left:18px;top:0;
+  box-shadow:-16px 9px 0 -2px #0d3a8e,16px 9px 0 -2px #0d3a8e;
+}
+.hq-group-icon::after{
+  content:"";
+  position:absolute;
+  width:46px;height:24px;
+  left:4px;bottom:4px;
+  background:
+    radial-gradient(circle at 50% 100%,#0d3a8e 0 16px,transparent 17px),
+    radial-gradient(circle at 20% 100%,#0d3a8e 0 12px,transparent 13px),
+    radial-gradient(circle at 80% 100%,#0d3a8e 0 12px,transparent 13px);
+}
+.hq-photo{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:43%;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(224,239,251,.55),rgba(247,225,192,.78) 56%,rgba(173,183,183,.32) 57%,rgba(162,171,172,.65) 100%),
+    radial-gradient(circle at 55% 30%,rgba(255,255,255,.92) 0 7%,transparent 8%),
+    linear-gradient(180deg,#d8ebfa 0%,#f6d8ae 64%,#b9c0bf 65% 100%);
+}
+.hq-photo::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:63%;
+  height:2px;
+  background:rgba(72,84,92,.35);
+  box-shadow:0 18px 0 rgba(72,84,92,.20),0 36px 0 rgba(72,84,92,.12);
+}
+.hq-monument{position:absolute;z-index:2}
+.hq-dome-left{
+  left:18%;bottom:15%;
+  width:190px;height:70px;
+  border-radius:95px 95px 0 0;
+  background:#f4f4f1;
+  box-shadow:0 6px 15px rgba(0,0,0,.12);
+}
+.hq-towers{
+  left:49%;bottom:13%;
+  width:90px;height:220px;
+}
+.hq-towers::before,.hq-towers::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:28px;height:210px;
+  background:linear-gradient(180deg,#cacac7,#efefec 60%,#c8c8c5);
+  box-shadow:0 4px 10px rgba(0,0,0,.12);
+}
+.hq-towers::before{left:8px;transform:skewY(-1deg)}
+.hq-towers::after{right:8px;transform:skewY(1deg)}
+.hq-bowl{
+  right:12%;bottom:14%;
+  width:230px;height:74px;
+  border-radius:0 0 115px 115px/0 0 74px 74px;
+  background:#efefec;
+  transform:scaleY(.72);
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+.hq-photo-caption{
+  position:absolute;
+  left:22px;bottom:18px;
+  font-size:10px;
+  letter-spacing:.28em;
+  line-height:1.65;
+  color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,.4);
+  z-index:4;
+}
+.hq-pattern{
+  display:grid;
+  grid-template-rows:repeat(10,1fr);
+  background:#173b9b;
+}
+.hq-tile{
+  position:relative;
+  display:block;
+  border-bottom:1px solid rgba(255,255,255,.8);
+  overflow:hidden;
+}
+.hq-dove::before{
+  content:"";
+  position:absolute;
+  inset:17% 15% 20%;
+  background:
+    radial-gradient(ellipse at 50% -15%,white 0 26%,transparent 27%),
+    radial-gradient(ellipse at -10% 58%,white 0 31%,transparent 32%),
+    radial-gradient(ellipse at 110% 58%,white 0 31%,transparent 32%);
+}
+.hq-dove::after{
+  content:"";
+  position:absolute;
+  left:50%;bottom:12%;
+  width:8px;height:12px;
+  background:#fff;
+  border-radius:50% 50% 60% 60%;
+  transform:translateX(-50%);
+}
+.hq-star::before,.hq-star::after{
+  content:"";
+  position:absolute;
+  left:50%;top:50%;
+  width:48%;height:18%;
+  background:#03060a;
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+.hq-star::after{transform:translate(-50%,-50%) rotate(-45deg)}
 
-/* Mobile uses the approved mobile composition rather than shrinking desktop. */
+/* Mobile: same composition, rebuilt natively */
 @media(max-width:700px){
-  .reference-entry{
-    align-items:flex-start;
-    background:#f7f5f0;
-    overflow-x:hidden;
-    overflow-y:auto;
+  .hq-entry{padding:0;background:#fff}
+  .hq-shell{
+    width:100%;
+    min-height:100svh;
+    grid-template-columns:1fr;
+    border-radius:0;
+    box-shadow:none;
   }
-  .reference-entry-stage{
-    width:100vw;
-    height:auto;
-    min-height:0;
-    aspect-ratio:366 / 886;
-    background-image:url("/entrada-danese-mobile.jpg");
-    background-size:100% 100%;
+  .hq-pattern{display:none}
+  .hq-main{
+    min-height:100svh;
+    padding:28px 18px 88px;
+    background:#fff;
   }
-  .reference-seller{
-    left:13.11%;
-    top:24.60%;
-    width:76.23%;
-    height:21.11%;
+  .hq-topline{margin-bottom:14px}
+  .hq-tagline{display:none}
+  .hq-brand{margin-top:22px;font-size:34px}
+  .hq-rule{margin:15px 0 18px}
+  .hq-title{font-size:12px;letter-spacing:.28em}
+  .hq-city{font-size:9px;margin-top:16px}
+  .hq-role-grid{
+    width:100%;
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-top:26px;
   }
-  .reference-sub{
-    left:13.11%;
-    top:47.74%;
-    width:76.23%;
-    height:21.90%;
+  .hq-role{
+    min-height:185px;
+    border-radius:14px;
   }
-}
-
-/* Very wide desktop: preserve the approved framing instead of stretching it. */
-@media(min-width:1200px) and (min-height:900px){
-  .reference-entry-stage{
-    width:min(1085px, calc(100svh * 1085 / 972));
+  .hq-role strong{font-size:18px}
+  .hq-role span{font-size:13px}
+  .hq-photo{
+    position:relative;
+    width:calc(100% + 36px);
+    left:auto;right:auto;bottom:auto;
+    margin:24px -18px -88px;
+    height:250px;
+    flex:none;
+  }
+  .hq-dome-left{left:10%;width:112px;height:42px;bottom:16%}
+  .hq-towers{left:48%;width:58px;height:150px;bottom:14%}
+  .hq-towers::before,.hq-towers::after{width:18px;height:142px}
+  .hq-bowl{right:7%;width:135px;height:48px;bottom:15%}
+  .hq-photo-caption{left:16px;bottom:74px;font-size:8px}
+  .hq-main::after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:60px;
+    background-color:#173b9b;
+    background-image:
+      radial-gradient(ellipse at 50% -10%,white 0 20%,transparent 21%),
+      linear-gradient(45deg,transparent 43%,#02050a 44% 56%,transparent 57%),
+      linear-gradient(-45deg,transparent 43%,#02050a 44% 56%,transparent 57%);
+    background-size:60px 60px;
   }
 }
