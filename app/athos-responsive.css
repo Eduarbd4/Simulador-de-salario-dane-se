@@ -1,0 +1,166 @@
+
+:root{
+ --blue:#173b9b; --blue2:#0d2f83; --ink:#0c1420; --paper:#fbfaf7;
+ --cream:#f0e8dc; --line:#ddd9d1; --sand:#eadfce; --orange:#f4c8a7;
+}
+*{box-sizing:border-box}
+html,body{background:#f7f4ee!important;color:var(--ink)}
+body{font-family:Arial,Helvetica,sans-serif!important}
+
+/* Original modular pattern inspired by the user's blue/white/black reference */
+.modern-art,.login-art{position:relative!important;overflow:hidden!important}
+.modern-art{
+ background:
+  linear-gradient(90deg,transparent 0 72%,rgba(255,255,255,.92) 72% 73%,transparent 73%),
+  linear-gradient(#f3efe8,#e8eef5)!important;
+}
+.modern-art::after,.login-art::after,.modern-sidebar::after{
+ content:"";position:absolute;pointer-events:none;
+ background-color:var(--blue);
+ background-image:
+   radial-gradient(ellipse at 50% 0%, white 0 18%, transparent 19%),
+   radial-gradient(ellipse at 0% 65%, white 0 24%, transparent 25%),
+   radial-gradient(ellipse at 100% 65%, white 0 24%, transparent 25%),
+   linear-gradient(45deg,transparent 43%,#05070b 44% 56%,transparent 57%),
+   linear-gradient(-45deg,transparent 43%,#05070b 44% 56%,transparent 57%);
+ background-size:80px 80px;
+ border-left:1px solid white;
+}
+.modern-art::after{right:0;top:0;bottom:0;width:132px}
+.modern-art::before{
+ content:"";position:absolute;left:8%;top:0;width:52%;height:100%;
+ background:
+  linear-gradient(108deg,transparent 0 42%,rgba(21,90,168,.10) 43% 100%),
+  radial-gradient(ellipse at 0 50%,transparent 0 52%,rgba(10,47,95,.16) 53% 55%,transparent 56%);
+}
+.art-word{position:absolute!important;z-index:3!important;top:42px!important;left:42px!important;color:#17233a!important;font-size:10px!important;letter-spacing:.25em!important;line-height:1.8!important}
+.tile-grid{display:none!important}
+
+/* Role selection */
+.choice-page.brasilia-choice{min-height:100vh!important;max-width:none!important;padding:28px!important;display:grid!important;place-items:center!important;background:#f4f0e9!important}
+.brasilia-choice-card{width:min(1160px,96vw)!important;min-height:670px!important;padding:0!important;display:grid!important;grid-template-columns:1.35fr .65fr!important;overflow:hidden!important;border:1px solid var(--line)!important;border-radius:18px!important;background:#fff!important;box-shadow:0 28px 80px rgba(15,23,42,.10)!important}
+.choice-copy{padding:62px!important;display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important}
+.choice-copy .danese-brand{font-size:13px!important;letter-spacing:.30em!important;margin-bottom:68px!important}
+.choice-copy .danese-brand b{font-weight:400!important;color:inherit!important}
+.choice-copy .eyebrow{display:none!important}
+.choice-copy h1{font-family:Georgia,"Times New Roman",serif!important;font-size:54px!important;letter-spacing:.20em!important;font-weight:400!important;margin:0!important;line-height:1!important}
+.brasilia-label{font-size:9px!important;letter-spacing:.36em!important;color:#5d6470!important;margin:20px 0 34px!important}
+.choice-copy>p:not(.eyebrow):not(.brasilia-label){font-size:14px!important;color:#595959!important}
+.choice-buttons{width:100%!important;max-width:650px!important;margin-top:38px!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important}
+.choice-buttons .role-button{min-height:190px!important;border-radius:12px!important;padding:28px!important;display:grid!important;align-content:space-between!important;border:1px solid var(--line)!important;box-shadow:0 8px 25px rgba(0,0,0,.04)!important}
+.choice-buttons .role-button.primary{background:#fff!important;color:var(--ink)!important}
+.choice-buttons .role-button:not(.primary){background:#fff!important;color:var(--ink)!important}
+.choice-buttons .role-button::before{content:"●";font-size:34px;color:var(--blue)}
+.choice-buttons .role-button:nth-child(2)::before{content:"● ●";letter-spacing:-7px}
+.role-kicker{display:none!important}
+.role-button strong{font-size:19px!important}
+.role-button em{font-style:normal!important;width:40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;justify-self:center;font-size:22px}
+.choice-signature{margin-top:auto!important;font-size:9px!important;letter-spacing:.25em!important;color:#777!important}
+
+/* Login */
+.login-page.brasilia-login{min-height:100vh!important;max-width:none!important;padding:30px!important;background:#f4f0e9!important}
+.brasilia-login-card{width:min(960px,94vw)!important;min-height:610px!important;padding:0!important;display:grid!important;grid-template-columns:1.42fr .58fr!important;overflow:hidden!important;border-radius:18px!important;border:1px solid var(--line)!important;background:#fff!important;box-shadow:0 28px 80px rgba(15,23,42,.10)!important}
+.login-form-area{padding:62px 72px!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+.danese-login-brand{font-family:Georgia,"Times New Roman",serif!important;font-size:34px!important;letter-spacing:.20em!important;text-align:center!important;margin-bottom:62px!important}
+.login-form-area h1{text-align:center!important;font-family:Georgia,"Times New Roman",serif!important;font-size:31px!important;letter-spacing:.04em!important;font-weight:400!important;text-transform:uppercase!important}
+.login-form-area>p{text-align:center!important;color:#626262!important}
+.login-form-area input{height:58px!important;border:1px solid #d7d3cc!important;border-radius:10px!important;background:#fff!important}
+.login-form-area>button:not(.back-link){height:58px!important;background:var(--blue)!important;color:#fff!important;border-radius:9px!important}
+.login-art{background:#f7f4ee!important}
+.login-art::after{left:0;right:0;bottom:0;height:160px;background-size:80px 80px}
+.login-art p{position:absolute!important;top:48px!important;left:28px!important;color:#222!important;font-size:9px!important;letter-spacing:.28em!important;line-height:1.8!important}
+
+/* Desktop dashboard */
+.simulator-page{max-width:none!important;margin:0!important;padding:0 0 0 210px!important;min-height:100vh!important;background:#f7f5f0!important}
+.modern-sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:210px!important;z-index:50!important;background:#111922!important;color:#fff!important;padding:31px 17px 92px!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+.modern-sidebar::after{left:0!important;right:0!important;bottom:0!important;height:70px!important;background-size:70px 70px!important}
+.sidebar-brand{font-family:Georgia,"Times New Roman",serif!important;font-size:22px!important;letter-spacing:.18em!important;padding:0 13px 42px!important}
+.modern-sidebar nav span{display:flex!important;gap:11px!important;align-items:center!important;padding:14px 15px!important;border-radius:9px!important;color:#ddd!important;font-size:13px!important}
+.modern-sidebar nav span.active{background:#253342!important;color:#fff!important}
+.modern-sidebar>button{margin-top:auto!important;background:transparent!important;border:0!important;color:#ddd!important;text-align:left!important;padding:14px 15px!important}
+.simulator-content{max-width:1600px!important;margin:0 auto!important;padding:27px 30px 30px!important}
+.simulator-page .hero{background:transparent!important;border:0!important;padding:4px 0 20px!important;margin:0!important}
+.simulator-page .hero h1{font-size:36px!important;letter-spacing:-.035em!important}
+.simulator-page .hero .eyebrow{color:var(--blue)!important}
+.simulator-page .status{background:#fff!important;border:1px solid var(--line)!important;border-radius:10px!important}
+.simulator-page .kpis{gap:12px!important}
+.simulator-page .kpis article{background:#fff!important;border:1px solid var(--line)!important;border-radius:10px!important;box-shadow:none!important;min-height:108px!important;padding:18px!important}
+.simulator-page .kpis article:nth-child(2){border-bottom:4px solid var(--blue)!important}
+.simulator-page .kpis article:nth-child(3){border-bottom:4px solid var(--blue)!important}
+.simulator-page .kpis .total-card{background:#f2e4cf!important;color:#111!important;border-color:#ead8bd!important}
+.simulator-page .panel{background:#fff!important;border:1px solid var(--line)!important;border-radius:10px!important;box-shadow:none!important}
+.simulator-page .panel-title{border-bottom:1px solid #e9e4dc!important}
+.simulator-page .panel-title p{color:var(--blue)!important}
+.simulator-page .number-field,.simulator-page .orange-select,.simulator-page .orange-number{background:#fff!important;border-color:#d7d3cc!important}
+.simulator-page .toggle.yes{background:var(--blue)!important;color:#fff!important}
+.simulator-page .toggle.no{background:#efede8!important}
+.simulator-page .grand-total{background:var(--blue2)!important;border-radius:10px!important}
+.simulator-page .grand-total strong{color:#fff!important}
+.simulator-page footer{display:none!important}
+
+/* Tablet */
+@media(max-width:980px){
+ .brasilia-choice-card,.brasilia-login-card{grid-template-columns:1fr!important}
+ .modern-art,.login-art{display:none!important}
+ .simulator-page{padding-left:0!important}
+ .modern-sidebar{position:sticky!important;top:0!important;width:100%!important;height:64px!important;padding:0 18px!important;display:flex!important;flex-direction:row!important;align-items:center!important}
+ .modern-sidebar::after{display:none!important}
+ .modern-sidebar nav{display:none!important}
+ .sidebar-brand{padding:0!important;font-size:18px!important}
+ .modern-sidebar>button{margin:0 0 0 auto!important;padding:10px!important}
+}
+
+/* Phone — designed independently rather than shrinking desktop */
+@media(max-width:640px){
+ body{background:#f8f6f1!important}
+ .choice-page.brasilia-choice,.login-page.brasilia-login{padding:0!important;background:#fff!important}
+ .brasilia-choice-card,.brasilia-login-card{width:100%!important;min-height:100vh!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+ .choice-copy{padding:54px 20px 110px!important}
+ .choice-copy .danese-brand{margin-bottom:70px!important}
+ .choice-copy h1{font-size:35px!important}
+ .choice-buttons{grid-template-columns:1fr!important;gap:12px!important}
+ .choice-buttons .role-button{min-height:132px!important;padding:20px!important}
+ .choice-buttons .role-button::before{font-size:25px!important}
+ .choice-signature{
+   position:fixed!important;left:0!important;right:0!important;bottom:0!important;height:72px!important;
+   background-color:var(--blue)!important;
+   background-image:
+    radial-gradient(ellipse at 50% 0%,white 0 18%,transparent 19%),
+    linear-gradient(45deg,transparent 43%,#05070b 44% 56%,transparent 57%),
+    linear-gradient(-45deg,transparent 43%,#05070b 44% 56%,transparent 57%)!important;
+   background-size:72px 72px!important;color:transparent!important;
+ }
+ .login-form-area{padding:42px 20px 110px!important}
+ .danese-login-brand{margin:35px 0 70px!important;font-size:25px!important}
+ .login-form-area h1{font-size:26px!important}
+ .brasilia-login-card::after{
+   content:"";position:fixed;left:0;right:0;bottom:0;height:72px;
+   background-color:var(--blue);
+   background-image:
+    radial-gradient(ellipse at 50% 0%,white 0 18%,transparent 19%),
+    linear-gradient(45deg,transparent 43%,#05070b 44% 56%,transparent 57%),
+    linear-gradient(-45deg,transparent 43%,#05070b 44% 56%,transparent 57%);
+   background-size:72px 72px;
+ }
+ .simulator-content{padding:18px 14px 92px!important}
+ .simulator-page .hero{display:block!important}
+ .simulator-page .hero h1{font-size:26px!important;margin-bottom:12px!important}
+ .simulator-page .status{width:100%!important;margin-top:10px!important}
+ .simulator-page .kpis{display:grid!important;grid-template-columns:1fr!important;gap:9px!important}
+ .simulator-page .kpis article{min-height:86px!important;padding:15px!important}
+ .simulator-page .kpis article:nth-child(3){display:none!important}
+ .simulator-page .grid,.simulator-page .panels,.simulator-page [class*="grid"]{grid-template-columns:1fr!important}
+ .simulator-page .panel{margin-bottom:10px!important}
+ .simulator-page input,.simulator-page select,.simulator-page button{min-height:44px}
+ .modern-sidebar{height:58px!important}
+ .modern-sidebar>button{font-size:12px!important}
+ .simulator-page::after{
+   content:"";position:fixed;z-index:45;left:0;right:0;bottom:0;height:58px;
+   background-color:var(--blue);
+   background-image:
+    radial-gradient(ellipse at 50% 0%,white 0 18%,transparent 19%),
+    linear-gradient(45deg,transparent 43%,#05070b 44% 56%,transparent 57%),
+    linear-gradient(-45deg,transparent 43%,#05070b 44% 56%,transparent 57%);
+   background-size:58px 58px;
+ }
+}
