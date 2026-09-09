@@ -164,3 +164,16 @@ body{font-family:Arial,Helvetica,sans-serif!important}
    background-size:58px 58px;
  }
 }
+
+/* Entrada limpa: marca aparece uma única vez */
+.choice-copy h1{
+  font-family:Arial,Helvetica,sans-serif!important;
+  font-size:clamp(48px,6vw,78px)!important;
+  letter-spacing:-.055em!important;
+  line-height:.9!important;
+  font-weight:600!important;
+  text-transform:uppercase!important;
+}
+@media(max-width:640px){
+  .choice-copy h1{font-size:43px!important;line-height:.94!important}
+}
